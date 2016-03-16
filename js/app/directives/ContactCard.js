@@ -1,3 +1,11 @@
+function CardController($scope) {
+	$scope.username = $scope.username.toLowerCase();
+}
+
+angular 
+	.module('app')
+	.controller('CardController', CardController);
+
 function ContactCard() {
 	return {
 		scope: {
@@ -16,10 +24,13 @@ function ContactCard() {
 				'<label>Phone:</label>',
 				'{{ phone }}',
 				'<label>Username:</label>',
-				'<span class="username">{{ username }}</span>',
+				'<span class="username">{{ username }}</span>', 
+				//// can also make lowercase by doing this:
+				//// '<span class="username">{{ username | lowercase }}</span>'
 			'</div>'
 		].join(''),
-		restrict: 'E'
+		restrict: 'E',
+		controller: 'CardController as ctrl'
 	};
 }
 
